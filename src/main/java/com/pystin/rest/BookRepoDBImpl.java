@@ -70,7 +70,7 @@ public class BookRepoDBImpl implements BookRepo{
             statement.setString(1, book.getAuthor());
             statement.setString(2, book.getNameBook());
             statement.setString(3, book.getText());
-            statement.setLong(4, book.getId());
+            statement.setLong(4, id);
             return statement.executeUpdate();
         }
     }
