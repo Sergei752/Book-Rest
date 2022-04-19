@@ -1,4 +1,6 @@
 package com.pystin.rest;
+import org.springframework.security.access.annotation.Secured;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +56,6 @@ public class BookRepoDBImpl implements BookRepo{
         try (Connection conn = DBConnection.getDBConnection();
              PreparedStatement statement = conn.prepareStatement(INSERT))
         {
-            //statement.setLong(1, book.getId());
             statement.setString(1, book.getAuthor());
             statement.setString(2, book.getNameBook());
             statement.setString(3, book.getText());
