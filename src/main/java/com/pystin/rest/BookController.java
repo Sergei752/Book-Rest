@@ -19,6 +19,27 @@ import java.util.Map;
 public class BookController {
 
     public BookRepo repo = new BookRepoDBImpl();
+    public UserRepo userRepo = new UserRepoDBImpl();
+
+        @GetMapping("/users/{id}")
+        public User readUser(@PathVariable long id) throws SQLException {
+            return userRepo.readUser(id);
+        }
+
+        @GetMapping("/")
+        public String hello() {
+            return "Hello";
+        }
+
+        @GetMapping("/user")
+        public String user() {
+            return "User";
+        }
+
+        @GetMapping("/admin")
+        public String admin() {
+            return "Admin";
+        }
 
         @GetMapping("/books")
         public List<Book> readAll() throws SQLException {
@@ -41,11 +62,6 @@ public class BookController {
             repo.update(id, newBook);
             return newBook;
         }
-
-//        @DeleteMapping("/books/{id}")
-//        public long delete(@PathVariable long id) throws SQLException {
-//            return repo.delete(id);
-//        }
 
         @DeleteMapping("/books/{id}")
         public List<Book> delete(@PathVariable long id) throws SQLException {
